@@ -1,0 +1,48 @@
+{
+  "name": "@edubrq/design-system",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "description": "Design system white-label compartilhado entre AquaFarm (ecamarao) e Oficina Inteligente.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tokens/base.css": "./src/tokens/base.css",
+    "./tokens/brand-aqua.css": "./src/tokens/brand-aqua.css",
+    "./tokens/brand-oficina.css": "./src/tokens/brand-oficina.css",
+    "./components.css": "./src/components/components.css"
+  },
+  "files": [
+    "dist",
+    "src/tokens",
+    "src/components/components.css"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "preview": "vite preview"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "dependencies": {
+    "lucide-react": "^1.31.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tsup": "^8.3.5",
+    "typescript": "~5.6.2",
+    "vite": "^6.0.0"
+  }
+}

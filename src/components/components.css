@@ -1,0 +1,222 @@
+/* Componentes — só consomem tokens semânticos (var(--...)), nunca hex fixo. */
+
+/* ---------- Button ---------- */
+.eds-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-app);
+  font-weight: 700;
+  font-size: calc(var(--fs-base) - 1px);
+  border-radius: var(--radius-sm);
+  border: var(--border-width) solid transparent;
+  padding: 9px 16px;
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast), opacity var(--transition-fast);
+}
+.eds-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.eds-btn--sm {
+  padding: 6px 12px;
+  font-size: var(--fs-sm);
+}
+.eds-btn--primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.eds-btn--primary:hover:not(:disabled) {
+  background: var(--accent-strong);
+}
+.eds-btn--secondary {
+  background: var(--surface-2);
+  color: var(--text);
+  border-color: var(--border);
+}
+.eds-btn--secondary:hover:not(:disabled) {
+  background: var(--surface-3);
+}
+.eds-btn--ghost {
+  background: transparent;
+  color: var(--accent-strong);
+}
+.eds-btn--ghost:hover:not(:disabled) {
+  background: var(--accent-soft);
+}
+.eds-btn--danger {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+.eds-btn--danger:hover:not(:disabled) {
+  background: var(--danger);
+  color: var(--surface-0);
+}
+
+/* ---------- Field / Input / Select ---------- */
+.eds-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: var(--space-4);
+}
+.eds-field__label {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  text-transform: var(--eyebrow-case);
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+.eds-input,
+.eds-select {
+  font-family: var(--font-app);
+  font-size: var(--fs-base);
+  color: var(--text);
+  background: var(--surface-1);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 9px 12px;
+  transition: border-color var(--transition-fast);
+}
+.eds-input::placeholder {
+  color: var(--text-faint);
+}
+.eds-input:hover,
+.eds-select:hover {
+  border-color: var(--border-strong);
+}
+.eds-input:focus-visible,
+.eds-select:focus-visible {
+  border-color: var(--accent);
+}
+.eds-field__hint {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+.eds-field--error .eds-input,
+.eds-field--error .eds-select {
+  border-color: var(--danger);
+}
+.eds-field--error .eds-field__hint {
+  color: var(--danger);
+}
+
+/* ---------- Badge ---------- */
+.eds-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  text-transform: var(--eyebrow-case);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+.eds-badge--accent {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+.eds-badge--success {
+  background: var(--success-soft);
+  color: var(--success);
+}
+.eds-badge--warning {
+  background: var(--warning-soft);
+  color: var(--warning);
+}
+.eds-badge--danger {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+.eds-badge--neutral {
+  background: var(--surface-2);
+  color: var(--text-muted);
+}
+
+/* ---------- Card ---------- */
+.eds-card {
+  background: var(--surface-1);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-4) var(--space-4) var(--space-4);
+}
+.eds-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+.eds-card__title {
+  margin: 0 0 2px;
+  font-size: var(--fs-md);
+  font-weight: 700;
+  letter-spacing: var(--tracking-heading);
+}
+.eds-card__meta {
+  margin: 0;
+  font-size: calc(var(--fs-base) - 1px);
+  color: var(--text-muted);
+}
+
+/* ---------- StatTile ---------- */
+.eds-stat {
+  background: var(--surface-1);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-3) var(--space-4);
+}
+.eds-stat__label {
+  font-size: var(--fs-xs);
+  text-transform: var(--eyebrow-case);
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.eds-stat__value {
+  font-size: var(--fs-stat);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+  line-height: 1.1;
+}
+.eds-stat__value--lg {
+  font-size: var(--fs-stat-lg);
+}
+.eds-stat__unit {
+  font-size: 0.5em;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-left: 4px;
+}
+
+/* ---------- Table ---------- */
+.eds-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: calc(var(--fs-base) - 1px);
+}
+.eds-table th {
+  text-align: left;
+  color: var(--text-muted);
+  font-weight: 700;
+  text-transform: var(--eyebrow-case);
+  letter-spacing: 0.04em;
+  font-size: var(--fs-xs);
+  padding: var(--space-2) var(--space-3);
+  border-bottom: var(--border-width) solid var(--border);
+}
+.eds-table td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--surface-2);
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+.eds-table tr:nth-child(even) td {
+  background: var(--surface-2);
+}

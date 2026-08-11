@@ -1,0 +1,90 @@
+/*
+  Tokens de base — Direção D "Sinal & Métrica".
+  Tema único, sempre escuro: decisão de produto, não modo alternativo.
+  Nenhum componente deve usar um hex fixo — apenas var(--token).
+  Cor de marca (--accent e derivados) vive em brand-aqua.css / brand-oficina.css.
+*/
+
+:root {
+  color-scheme: dark;
+
+  /* Superfícies */
+  --surface-0: #0a0f14; /* fundo da página */
+  --surface-1: #111a22; /* card, painel, input */
+  --surface-2: #16212b; /* zebra de tabela, trilho de progresso, hover leve */
+  --surface-3: #1c2933; /* hover de item interativo, chip neutro */
+
+  /* Bordas */
+  --border: #22323e;
+  --border-strong: #31465a;
+  --border-width: 1px;
+
+  /* Texto */
+  --text: #eaf2f8;
+  --text-muted: #83a0b4;
+  --text-faint: #5a7085;
+
+  /* Estado semântico (sempre distinto da cor de marca) */
+  --success: #4ed89a;
+  --success-soft: #0f2a22;
+  --warning: #e8c468;
+  --warning-soft: #332a10;
+  --danger: #f0796b;
+  --danger-soft: #3a1714;
+
+  /* Espaço */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  /* Raio */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+
+  /* Sombra / elevação */
+  --shadow-card: 0 0 0 1px rgba(255, 255, 255, 0.02), 0 10px 26px -14px rgba(0, 0, 0, 0.7);
+  --shadow-popover: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 20px 45px -20px rgba(0, 0, 0, 0.85);
+
+  /* Tipografia */
+  --font-app: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+  --tracking-heading: -0.01em;
+  --eyebrow-case: uppercase;
+
+  --fs-xs: 11px;
+  --fs-sm: 12.5px;
+  --fs-base: 13.5px;
+  --fs-md: 15px;
+  --fs-lg: 18px;
+  --fs-xl: 22px;
+  --fs-stat: 28px;
+  --fs-stat-lg: 40px;
+
+  /* Foco / interação — usa a cor de marca, definida nos arquivos brand-*.css */
+  --focus-ring: 0 0 0 3px var(--accent-soft), 0 0 0 1px var(--accent);
+  --transition-fast: 120ms ease;
+}
+
+body {
+  background: var(--surface-0);
+  color: var(--text);
+  font-family: var(--font-app);
+  font-size: var(--fs-base);
+}
+
+*:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0ms;
+  }
+}
