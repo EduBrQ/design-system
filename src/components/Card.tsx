@@ -1,4 +1,5 @@
 import type { HTMLAttributes, ReactNode } from "react";
+import { cx } from "../utils/cx";
 
 export interface CardProps extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {
   title?: ReactNode;
@@ -8,7 +9,7 @@ export interface CardProps extends Omit<HTMLAttributes<HTMLDivElement>, "title">
 
 export function Card({ title, meta, action, children, className, ...rest }: CardProps) {
   return (
-    <div className={["eds-card", className].filter(Boolean).join(" ")} {...rest}>
+    <div className={cx("eds-card", className)} {...rest}>
       {(title || meta || action) && (
         <div className="eds-card__head">
           <div>

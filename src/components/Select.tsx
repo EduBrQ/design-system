@@ -1,4 +1,5 @@
 import { forwardRef, useId, type SelectHTMLAttributes } from "react";
+import { cx } from "../utils/cx";
 
 export interface SelectOption {
   value: string;
@@ -18,13 +19,13 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     const generatedId = useId();
     const selectId = id ?? generatedId;
     return (
-      <div className={["eds-field", error ? "eds-field--error" : ""].filter(Boolean).join(" ")}>
+      <div className={cx("eds-field", error && "eds-field--error")}>
         {label && (
           <label className="eds-field__label" htmlFor={selectId}>
             {label}
           </label>
         )}
-        <select ref={ref} id={selectId} className={["eds-select", className].filter(Boolean).join(" ")} {...rest}>
+        <select ref={ref} id={selectId} className={cx("eds-select", className)} {...rest}>
           {placeholder && (
             <option value="" disabled hidden>
               {placeholder}

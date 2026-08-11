@@ -1,4 +1,5 @@
 import type { HTMLAttributes } from "react";
+import { cx } from "../utils/cx";
 
 export type BadgeTone = "accent" | "success" | "warning" | "danger" | "neutral";
 
@@ -7,5 +8,5 @@ export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 }
 
 export function Badge({ tone = "neutral", className, ...rest }: BadgeProps) {
-  return <span className={["eds-badge", `eds-badge--${tone}`, className].filter(Boolean).join(" ")} {...rest} />;
+  return <span className={cx("eds-badge", `eds-badge--${tone}`, className)} {...rest} />;
 }

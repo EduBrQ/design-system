@@ -1,4 +1,5 @@
 import type { HTMLAttributes, ReactNode } from "react";
+import { cx } from "../utils/cx";
 
 export interface StatTileProps extends HTMLAttributes<HTMLDivElement> {
   label: ReactNode;
@@ -9,9 +10,9 @@ export interface StatTileProps extends HTMLAttributes<HTMLDivElement> {
 
 export function StatTile({ label, value, unit, size = "md", className, ...rest }: StatTileProps) {
   return (
-    <div className={["eds-stat", className].filter(Boolean).join(" ")} {...rest}>
+    <div className={cx("eds-stat", className)} {...rest}>
       <div className="eds-stat__label">{label}</div>
-      <div className={["eds-stat__value", size === "lg" ? "eds-stat__value--lg" : ""].filter(Boolean).join(" ")}>
+      <div className={cx("eds-stat__value", size === "lg" && "eds-stat__value--lg")}>
         {value}
         {unit && <span className="eds-stat__unit">{unit}</span>}
       </div>

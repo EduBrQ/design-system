@@ -37,7 +37,7 @@ function Exemplo() {
 }
 ```
 
-Só um arquivo de marca deve ser importado por app (`brand-aqua.css` no AquaFarm, `brand-oficina.css` na Oficina Inteligente). O atributo `data-brand` no `<html>` existe para quando os dois arquivos de marca precisam conviver no mesmo bundle — como no `playground` deste repositório.
+Só um arquivo de marca deve ser importado por app (`brand-aqua.css` no AquaFarm, `brand-oficina.css` na Oficina Inteligente). O atributo `data-brand` no `<html>` existe para quando os dois arquivos de marca precisam conviver no mesmo bundle — como no site de documentação (`docs/`) deste repositório.
 
 ## Arquitetura de tokens
 
@@ -54,17 +54,24 @@ Motivo do tema único sempre-escuro: é uma decisão de produto (ver especifica�
 
 ```bash
 npm install
-npm run dev        # playground em http://localhost:5183 — todos os componentes, com troca de marca ao vivo
+npm run dev        # site de documentação em http://localhost:5183 — Home, Componentes, Tokens
 npm run typecheck
 npm run build       # gera dist/ (ESM + .d.ts) via tsup
 ```
 
-## Componentes disponíveis (v0.1)
+O site de documentação (`docs/`) tem três páginas — **Home** (visão geral, arquitetura de tokens, como começar), **Componentes** (todos os componentes reais renderizados, com troca de marca ao vivo) e **Tokens** (referência visual de cor, espaço, raio, tipografia e sombra). Ele mesmo é construído consumindo o pacote (`src/`) diretamente, então é sempre um reflexo fiel do que existe.
 
-`Button`, `Input`, `Select`, `Badge`, `Card`, `StatTile`, `Table` (+ `Table.Head`, `Table.Row`, `Table.Cell`).
+## Componentes disponíveis (v0.2)
+
+- **Layout** — `Stack`, `Grid` (+ `Grid.Item`), `Container`
+- **Ações** — `Button`, `IconButton`
+- **Formulário** — `Input`, `Textarea`, `Select`, `Checkbox`, `Radio`, `Switch`
+- **Dados** — `Badge`, `Card`, `StatTile`, `Table` (+ `Table.Head`/`Body`/`Row`/`Th`/`Td`), `Avatar`, `Divider`
+- **Feedback** — `Alert`, `Spinner`, `Skeleton`, `EmptyState`, `Tooltip`, `ToastProvider` + `useToast`
+- **Overlay & navegação** — `Modal`, `Tabs` (+ `Tabs.List`/`Tab`/`Panel`), `Breadcrumbs`, `Pagination`
 
 ## Próximos passos
 
 - Publicar como pacote versionado (tag por release) para os dois apps fixarem uma versão.
 - Migrar `ecamarao` e `oficina-inteligente` para consumir estes tokens no lugar do CSS solto atual.
-- Adicionar Modal, Toast e um componente de navegação (sidebar/topbar).
+- Adicionar um componente de navegação de app (sidebar/topbar) e Popover/Dropdown, quando surgir um caso de uso real.

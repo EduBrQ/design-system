@@ -68,6 +68,16 @@
   /* Foco / interação — usa a cor de marca, definida nos arquivos brand-*.css */
   --focus-ring: 0 0 0 3px var(--accent-soft), 0 0 0 1px var(--accent);
   --transition-fast: 120ms ease;
+
+  /* Camadas */
+  --z-tooltip: 40;
+  --z-modal: 50;
+  --z-toast: 60;
+
+  /* Larguras de container — ver Container.tsx */
+  --container-md: 760px;
+  --container-lg: 1000px;
+  --container-xl: 1200px;
 }
 
 body {

@@ -1,7 +1,8 @@
 import type { TableHTMLAttributes, HTMLAttributes, ThHTMLAttributes, TdHTMLAttributes } from "react";
+import { cx } from "../utils/cx";
 
 function TableRoot({ className, ...rest }: TableHTMLAttributes<HTMLTableElement>) {
-  return <table className={["eds-table", className].filter(Boolean).join(" ")} {...rest} />;
+  return <table className={cx("eds-table", className)} {...rest} />;
 }
 
 function TableHead(props: HTMLAttributes<HTMLTableSectionElement>) {
