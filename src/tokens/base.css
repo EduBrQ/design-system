@@ -69,10 +69,12 @@
   --focus-ring: 0 0 0 3px var(--accent-soft), 0 0 0 1px var(--accent);
   --transition-fast: 120ms ease;
 
-  /* Camadas */
-  --z-tooltip: 40;
-  --z-modal: 50;
-  --z-toast: 60;
+  /* Camadas — altas de propósito: um overlay do DS deve ficar acima de
+     qualquer chrome local do app consumidor (header sticky, banners),
+     não só acima do resto do próprio DS. */
+  --z-tooltip: 3000;
+  --z-modal: 3100;
+  --z-toast: 3200;
 
   /* Larguras de container — ver Container.tsx */
   --container-md: 760px;
