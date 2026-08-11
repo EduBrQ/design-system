@@ -1,0 +1,79 @@
+/*
+  Tema escuro "Gray 100" do Carbon — importe junto com tokens/base.css.
+
+  Aplica automaticamente quando o sistema está em modo escuro
+  (prefers-color-scheme) OU quando o app força [data-theme="g100"] no
+  elemento raiz (uso recomendado para produtos sempre-escuros, já que
+  prefers-color-scheme sozinho não garante o tema em todo dispositivo).
+  Um [data-theme="white"] explícito sempre vence a preferência do sistema.
+*/
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="white"]) {
+    color-scheme: dark;
+
+    --surface-0: #161616; /* Gray 100 */
+    --surface-1: #262626; /* Gray 90 */
+    --surface-2: #393939; /* Gray 80 */
+    --surface-3: #525252; /* Gray 70 */
+
+    --border: #393939; /* Gray 80 */
+    --border-strong: #6f6f6f; /* Gray 60 */
+
+    --text: #f4f4f4; /* Gray 10 */
+    --text-muted: #c6c6c6; /* Gray 30 */
+    --text-faint: #8d8d8d; /* Gray 50 */
+
+    --success: #42be65; /* Green 40 */
+    --success-soft: #0e2a1a;
+    --warning: #f1c21b; /* Yellow 30 */
+    --warning-soft: #2b2007;
+    --danger: #fa4d56; /* Red 50 */
+    --danger-ink: #ffffff;
+    --danger-soft: #2c0e0e;
+
+    --accent: #78a9ff; /* Blue 40 — legível sobre fundo quase-preto */
+    --accent-strong: #a6c8ff; /* Blue 30 — hover */
+    --accent-soft: #0f2452;
+    --accent-ink: #161616;
+
+    --focus: #ffffff;
+
+    --shadow-card: none;
+    --shadow-popover: 0 1px 2px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(0, 0, 0, 0.4);
+  }
+}
+
+[data-theme="g100"] {
+  color-scheme: dark;
+
+  --surface-0: #161616;
+  --surface-1: #262626;
+  --surface-2: #393939;
+  --surface-3: #525252;
+
+  --border: #393939;
+  --border-strong: #6f6f6f;
+
+  --text: #f4f4f4;
+  --text-muted: #c6c6c6;
+  --text-faint: #8d8d8d;
+
+  --success: #42be65;
+  --success-soft: #0e2a1a;
+  --warning: #f1c21b;
+  --warning-soft: #2b2007;
+  --danger: #fa4d56;
+  --danger-ink: #ffffff;
+  --danger-soft: #2c0e0e;
+
+  --accent: #78a9ff;
+  --accent-strong: #a6c8ff;
+  --accent-soft: #0f2452;
+  --accent-ink: #161616;
+
+  --focus: #ffffff;
+
+  --shadow-card: none;
+  --shadow-popover: 0 1px 2px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(0, 0, 0, 0.4);
+}

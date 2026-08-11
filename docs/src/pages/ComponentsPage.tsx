@@ -42,8 +42,8 @@ export function ComponentsPage() {
         <span className="docs-eyebrow">Referência viva</span>
         <h1>Componentes</h1>
         <p className="docs-lede">
-          Cada exemplo abaixo é o componente real do pacote, renderizado com os tokens da marca ativa — troque a
-          marca no topo da página para ver a diferença.
+          Cada exemplo abaixo é o componente real do pacote, renderizado com os tokens do tema ativo — troque o
+          tema no topo da página para ver claro/escuro lado a lado.
         </p>
       </div>
 

@@ -1,27 +1,29 @@
 # @edubrq/design-system
 
-Design system white-label compartilhado entre **AquaFarm** (repo `ecamarao`) e **Oficina Inteligente**. Um único conjunto de componentes React, com a marca (cor, e só a cor — o resto do visual é igual) trocada por CSS, não por fork de código.
+Design system compartilhado entre **AquaFarm** (repo `ecamarao`) e **Oficina Inteligente**. Um único conjunto de componentes React, no padrão visual do **Carbon Design System** (IBM): cantos retos, superfícies achatadas, tipografia IBM Plex, grade de espaçamento em base 2px, foco em contorno sólido.
 
-Direção visual: **Sinal & Métrica** — tema sempre escuro, números grandes, pensado para painéis operacionais (dashboard de fazenda, atendimento de oficina), não só telas de KPI.
+Cor de interação é única e compartilhada entre produtos (Carbon Blue 60) — a diferença entre os dois apps é o **tema** (claro ou escuro), não mais a cor de marca.
 
 ## Instalação
 
 Cada app consome este repositório como dependência git, apontando para uma tag/commit:
 
 ```bash
-npm install github:EduBrQ/design-system#v0.1.0
+npm install github:EduBrQ/design-system#v1.0.0
 ```
 
 ## Uso
 
 ```tsx
 // no entrypoint do app (main.tsx)
-import "@edubrq/design-system/tokens/base.css";
-import "@edubrq/design-system/tokens/brand-aqua.css"; // ou brand-oficina.css
+import "@edubrq/design-system/tokens/base.css";       // tema White (claro) — padrão
+import "@edubrq/design-system/tokens/theme-g100.css"; // opcional: tema Gray 100 (escuro)
 import "@edubrq/design-system/components.css";
 
 // no elemento raiz do HTML (index.html)
-// <html data-brand="aqua"> — ou "oficina"
+// <html data-theme="g100"> força escuro (uso do AquaFarm, sempre-escuro)
+// <html data-theme="white"> força claro
+// sem o atributo: segue prefers-color-scheme do sistema
 ```
 
 ```tsx
@@ -37,18 +39,22 @@ function Exemplo() {
 }
 ```
 
-Só um arquivo de marca deve ser importado por app (`brand-aqua.css` no AquaFarm, `brand-oficina.css` na Oficina Inteligente). O atributo `data-brand` no `<html>` existe para quando os dois arquivos de marca precisam conviver no mesmo bundle — como no site de documentação (`docs/`) deste repositório.
-
 ## Arquitetura de tokens
 
 ```
-src/tokens/base.css          → neutros, espaço, raio, tipografia, sombra (tema único, sempre escuro)
-src/tokens/brand-aqua.css    → --accent e derivados para o AquaFarm (azul-esverdeado)
-src/tokens/brand-oficina.css → --accent e derivados para a Oficina Inteligente (cobre)
-src/components/*.tsx         → componentes React, só consomem var(--token), nunca hex fixo
+src/tokens/base.css       → neutros do tema White (claro, padrão) + espaço, raio (0), tipo, sombra, movimento
+src/tokens/theme-g100.css → overrides do tema Gray 100 (escuro) — [data-theme="g100"] ou prefers-color-scheme
+src/components/*.tsx      → componentes React, só consomem var(--token), nunca hex fixo
 ```
 
-Motivo do tema único sempre-escuro: é uma decisão de produto (ver especificação de direções visuais), não uma limitação — os dois apps são painéis operacionais de uso contínuo, e a direção D foi escolhida deliberadamente entre 4 alternativas testadas.
+Decisões de tokens que valem registrar:
+
+- **Raio zero.** `--radius-sm/md/lg` são todos `0` — o Carbon não arredonda botão, card, input ou tile. Só `--radius-pill` (2px) existe, reservado à Tag/Badge.
+- **Sombra quase inexistente.** `--shadow-card` é `none` — cards e tiles se diferenciam da página por cor de superfície e borda, não por sombra suave. `--shadow-popover` existe só para o que realmente flutua por cima do conteúdo (Modal, Tooltip).
+- **Espaço em grade 2px.** `--space-0` a `--space-9` = 2, 4, 8, 12, 16, 24, 32, 40, 48, 64px — a escala real do Carbon.
+- **Cor de interação única.** `--accent` é Carbon Blue 60 (`#0f62fe`) no tema claro; no escuro vira Blue 40 (`#78a9ff`) para manter contraste legível sobre um fundo quase-preto — o próprio Carbon faz essa troca entre temas.
+- **Input com sublinhado.** `.eds-input`/`.eds-select` usam preenchimento sólido + borda inferior de 2px, não borda ao redor — é a assinatura visual do campo de texto do Carbon.
+- **Alert/Toast como Notification.** Fundo neutro (`--surface-1`) + tarja lateral colorida de 4px + ícone na cor semântica — não um fundo inteiro tingido.
 
 ## Desenvolvimento
 
@@ -59,9 +65,9 @@ npm run typecheck
 npm run build       # gera dist/ (ESM + .d.ts) via tsup
 ```
 
-O site de documentação (`docs/`) tem três páginas — **Home** (visão geral, arquitetura de tokens, como começar), **Componentes** (todos os componentes reais renderizados, com troca de marca ao vivo) e **Tokens** (referência visual de cor, espaço, raio, tipografia e sombra). Ele mesmo é construído consumindo o pacote (`src/`) diretamente, então é sempre um reflexo fiel do que existe.
+O site de documentação (`docs/`) tem três páginas — **Home** (visão geral, arquitetura de tokens, como começar), **Componentes** (todos os componentes reais renderizados, com troca de tema ao vivo) e **Tokens** (referência visual de cor, espaço, raio, tipografia e sombra nos dois temas). Ele mesmo é construído consumindo o pacote (`src/`) diretamente, então é sempre um reflexo fiel do que existe.
 
-## Componentes disponíveis (v0.2)
+## Componentes disponíveis (v1.0)
 
 - **Layout** — `Stack`, `Grid` (+ `Grid.Item`), `Container`
 - **Ações** — `Button`, `IconButton`
@@ -72,6 +78,6 @@ O site de documentação (`docs/`) tem três páginas — **Home** (visão geral
 
 ## Próximos passos
 
+- Carregar a fonte IBM Plex Sans/Mono nos apps consumidores (o token `--font-app` já assume Plex, com fallback de sistema caso não esteja carregada).
 - Publicar como pacote versionado (tag por release) para os dois apps fixarem uma versão.
-- Migrar `ecamarao` e `oficina-inteligente` para consumir estes tokens no lugar do CSS solto atual.
 - Adicionar um componente de navegação de app (sidebar/topbar) e Popover/Dropdown, quando surgir um caso de uso real.

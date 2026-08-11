@@ -38,7 +38,7 @@ const TEXT: TokenItem[] = [
 ];
 
 const BRAND: TokenItem[] = [
-  { token: "--accent", label: "Cor de marca (troque no topo da página)" },
+  { token: "--accent", label: "Interação — Carbon Blue, igual em todo produto" },
   { token: "--accent-strong", label: "Hover / destaque" },
   { token: "--accent-soft", label: "Fundo suave" },
   { token: "--accent-ink", label: "Texto sobre --accent" },
@@ -50,12 +50,12 @@ const STATUS: TokenItem[] = [
   { token: "--danger", label: "Erro" },
 ];
 
-const SPACE = [1, 2, 3, 4, 5, 6] as const;
+const SPACE = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] as const;
 const RADIUS = [
   { token: "--radius-sm", label: "sm" },
   { token: "--radius-md", label: "md" },
   { token: "--radius-lg", label: "lg" },
-  { token: "--radius-pill", label: "pill" },
+  { token: "--radius-pill", label: "pill (tag)" },
 ];
 const TYPE_SCALE = [
   "--fs-xs",
@@ -75,25 +75,25 @@ export function TokensPage() {
         <span className="docs-eyebrow">Referência</span>
         <h1>Tokens</h1>
         <p className="docs-lede">
-          Valores definidos em <code>src/tokens/base.css</code> e nos arquivos de marca. Nenhum componente deve usar
-          um hex fixo — só estes tokens.
+          Valores definidos em <code>src/tokens/base.css</code> (tema White) e <code>theme-g100.css</code> (tema
+          escuro). Nenhum componente deve usar um hex fixo — só estes tokens.
         </p>
       </div>
 
-      <DocSection id="cor" title="Cor">
+      <DocSection id="cor" title="Cor" description="Troque o tema no topo da página para ver os dois conjuntos de valores.">
         <p className="docs-token-group-label">Superfície</p>
         <SwatchRow items={SURFACES} />
         <p className="docs-token-group-label">Borda</p>
         <SwatchRow items={BORDERS} />
         <p className="docs-token-group-label">Texto</p>
         <SwatchRow items={TEXT} />
-        <p className="docs-token-group-label">Marca (dinâmico — troque no topo da página)</p>
+        <p className="docs-token-group-label">Interação</p>
         <SwatchRow items={BRAND} />
         <p className="docs-token-group-label">Semântico</p>
         <SwatchRow items={STATUS} />
       </DocSection>
 
-      <DocSection id="espaco" title="Espaço" description="--space-1 a --space-6, em incrementos de 4px.">
+      <DocSection id="espaco" title="Espaço" description="Grade 2px do Carbon — --space-0 a --space-9.">
         <div className="docs-scale-row">
           {SPACE.map((n) => (
             <div key={n} className="docs-scale-item">
@@ -104,7 +104,11 @@ export function TokensPage() {
         </div>
       </DocSection>
 
-      <DocSection id="raio" title="Raio">
+      <DocSection
+        id="raio"
+        title="Raio"
+        description="O Carbon não arredonda cantos — sm/md/lg são todos 0. Só a tag (pill) leva um raio sutil de 2px."
+      >
         <div className="docs-scale-row">
           {RADIUS.map((r) => (
             <div key={r.token} className="docs-scale-item">
@@ -126,7 +130,11 @@ export function TokensPage() {
         </div>
       </DocSection>
 
-      <DocSection id="sombra" title="Sombra">
+      <DocSection
+        id="sombra"
+        title="Sombra"
+        description="O Carbon é essencialmente plano — --shadow-card é 'none' (cards se diferenciam por cor/borda). --shadow-popover existe só para overlays que flutuam de verdade (modal, tooltip)."
+      >
         <div className="docs-scale-row">
           <div className="docs-scale-item">
             <div className="docs-shadow-box" style={{ boxShadow: "var(--shadow-card)" }} />
