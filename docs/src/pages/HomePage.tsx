@@ -14,13 +14,12 @@ export function HomePage() {
   return (
     <div className="docs-stack">
       <section className="docs-hero">
-        <span className="docs-eyebrow">Design system · v1.0</span>
-        <h1>Um sistema, no padrão Carbon</h1>
+        <span className="docs-eyebrow">Design system · v0.2</span>
+        <h1>Um sistema, duas marcas</h1>
         <p className="docs-lede">
-          27 componentes React + TypeScript, tokens em CSS puro, visual no padrão do Carbon Design System (IBM):
-          cantos retos, superfícies achatadas, tipografia IBM Plex, grade de espaçamento em base 2px. Dois produtos
-          (AquaFarm e Oficina Inteligente) compartilham o mesmo sistema — a diferença entre eles agora é o tema
-          (claro ou escuro), não mais a cor.
+          27 componentes React + TypeScript, tokens em CSS puro, tema único sempre-escuro — decisão de produto para
+          painéis operacionais de uso contínuo, não uma limitação. A marca (AquaFarm ou Oficina Inteligente) muda por
+          configuração, nunca por fork de componente.
         </p>
         <div className="docs-pill-row">
           <span className="docs-pill">
@@ -42,24 +41,22 @@ export function HomePage() {
 
       <section className="docs-section">
         <div className="docs-section__head">
-          <h2>Como o tema funciona</h2>
-          <p>Quatro camadas, cada uma só depende da anterior — trocar de tema nunca exige tocar em componente.</p>
+          <h2>Como o white-label funciona</h2>
+          <p>Quatro camadas, cada uma só depende da anterior — trocar de marca nunca exige tocar em componente.</p>
         </div>
         <div className="docs-layers">
           <div className="docs-layer">
             <span className="docs-layer__n">01</span>
             <h3>Primitivos</h3>
             <p>
-              Escalas cruas em <code>base.css</code> — espaço (grade 2px), raio (zero), tipo (IBM Plex), sombra. Sem
-              cor de tema.
+              Escalas cruas em <code>base.css</code> — espaço, raio, tipo, sombra. Sem significado de marca.
             </p>
           </div>
           <div className="docs-layer">
             <span className="docs-layer__n">02</span>
             <h3>Semânticos</h3>
             <p>
-              <code>--accent</code>, <code>--surface-1</code>, <code>--danger</code>. É aqui que mora o tema —
-              White por padrão em <code>base.css</code>.
+              <code>--accent</code>, <code>--surface-1</code>, <code>--danger</code>. É aqui que mora o tema.
             </p>
           </div>
           <div className="docs-layer">
@@ -73,8 +70,7 @@ export function HomePage() {
             <span className="docs-layer__n">04</span>
             <h3>Tema por app</h3>
             <p>
-              Importe <code>theme-g100.css</code> e use <code>data-theme="g100"</code> no <code>&lt;html&gt;</code>{" "}
-              para forçar o escuro — como o AquaFarm faz.
+              <code>brand-aqua.css</code> ou <code>brand-oficina.css</code>, um import por aplicação.
             </p>
           </div>
         </div>
@@ -85,15 +81,12 @@ export function HomePage() {
           <h2>Começando</h2>
         </div>
         <pre className="docs-code">
-          <code>{`npm install github:EduBrQ/design-system#v1.0.0
+          <code>{`npm install github:EduBrQ/design-system#v0.2.0
 
 // main.tsx
-import "@edubrq/design-system/tokens/base.css";       // tema White (claro), padrão
-import "@edubrq/design-system/tokens/theme-g100.css"; // opcional: tema escuro
+import "@edubrq/design-system/tokens/base.css";
+import "@edubrq/design-system/tokens/brand-aqua.css";
 import "@edubrq/design-system/components.css";
-
-// <html data-theme="g100"> força escuro; "white" força claro;
-// sem o atributo, segue prefers-color-scheme do sistema.
 
 import { Button, Card, Badge } from "@edubrq/design-system";`}</code>
         </pre>

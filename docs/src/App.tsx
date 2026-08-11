@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { ToastProvider } from "../../src";
-import { ThemeProvider } from "./ThemeContext";
+import { BrandProvider } from "./BrandContext";
 import { DocsLayout } from "./layout/DocsLayout";
 import { ComponentsPage } from "./pages/ComponentsPage";
 import { HomePage } from "./pages/HomePage";
@@ -8,7 +8,7 @@ import { TokensPage } from "./pages/TokensPage";
 
 export function App() {
   return (
-    <ThemeProvider>
+    <BrandProvider>
       <ToastProvider>
         <Routes>
           <Route element={<DocsLayout />}>
@@ -18,6 +18,6 @@ export function App() {
           </Route>
         </Routes>
       </ToastProvider>
-    </ThemeProvider>
+    </BrandProvider>
   );
 }

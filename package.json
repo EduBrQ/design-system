@@ -1,9 +1,9 @@
 {
   "name": "@edubrq/design-system",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "private": false,
   "type": "module",
-  "description": "Design system compartilhado entre AquaFarm (ecamarao) e Oficina Inteligente, no padrão visual do Carbon Design System (IBM).",
+  "description": "Design system white-label compartilhado entre AquaFarm (ecamarao) e Oficina Inteligente.",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -13,7 +13,8 @@
       "import": "./dist/index.js"
     },
     "./tokens/base.css": "./src/tokens/base.css",
-    "./tokens/theme-g100.css": "./src/tokens/theme-g100.css",
+    "./tokens/brand-aqua.css": "./src/tokens/brand-aqua.css",
+    "./tokens/brand-oficina.css": "./src/tokens/brand-oficina.css",
     "./components.css": "./src/components/components.css"
   },
   "files": [

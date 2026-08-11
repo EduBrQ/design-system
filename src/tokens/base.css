@@ -1,95 +1,73 @@
 /*
-  Tokens de base — visual no padrão Carbon Design System (IBM):
-  cantos retos, superfícies achatadas, tipografia IBM Plex, escala de
-  espaçamento em grade 2px, foco em contorno sólido (sem blur).
-
-  Cor de interação é única e compartilhada entre produtos (Blue 60 do
-  Carbon) — não há mais arquivo de marca por produto. Os valores de cor
-  abaixo são o tema claro "White" do Carbon, aplicado por padrão em
-  :root. Para o tema escuro "Gray 100", importe também theme-g100.css
-  e use [data-theme="g100"] no elemento raiz (ou deixe seguir
-  prefers-color-scheme automaticamente).
-
+  Tokens de base — Direção D "Sinal & Métrica".
+  Tema único, sempre escuro: decisão de produto, não modo alternativo.
   Nenhum componente deve usar um hex fixo — apenas var(--token).
+  Cor de marca (--accent e derivados) vive em brand-aqua.css / brand-oficina.css.
 */
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 
-  /* Superfícies — tema White do Carbon */
-  --surface-0: #ffffff; /* fundo da página */
-  --surface-1: #f4f4f4; /* Gray 10 — card, painel, input */
-  --surface-2: #e0e0e0; /* Gray 20 — zebra de tabela, hover leve */
-  --surface-3: #c6c6c6; /* Gray 30 — hover de item interativo */
+  /* Superfícies */
+  --surface-0: #0a0f14; /* fundo da página */
+  --surface-1: #111a22; /* card, painel, input */
+  --surface-2: #16212b; /* zebra de tabela, trilho de progresso, hover leve */
+  --surface-3: #1c2933; /* hover de item interativo, chip neutro */
 
   /* Bordas */
-  --border: #c6c6c6; /* Gray 30 */
-  --border-strong: #8d8d8d; /* Gray 50 */
+  --border: #22323e;
+  --border-strong: #31465a;
   --border-width: 1px;
 
   /* Texto */
-  --text: #161616; /* Gray 100 */
-  --text-muted: #525252; /* Gray 70 */
-  --text-faint: #8d8d8d; /* Gray 50 */
+  --text: #eaf2f8;
+  --text-muted: #83a0b4;
+  --text-faint: #5a7085;
 
-  /* Estado semântico — paleta de suporte do Carbon */
-  --success: #24a148; /* Green 60 */
-  --success-soft: #defbe6; /* Green 10 */
-  --warning: #8a5300; /* dourado escurecido p/ contraste em texto (Carbon usa Yellow só em preenchimento) */
-  --warning-soft: #fcf4d6; /* Yellow 10 */
-  --danger: #da1e28; /* Red 60 */
-  --danger-soft: #fff1f1; /* Red 10 */
-  --danger-ink: #ffffff; /* texto sobre preenchimento danger */
+  /* Estado semântico (sempre distinto da cor de marca) */
+  --success: #4ed89a;
+  --success-soft: #0f2a22;
+  --warning: #e8c468;
+  --warning-soft: #332a10;
+  --danger: #f0796b;
+  --danger-soft: #3a1714;
 
-  /* Cor de interação — Carbon Blue 60, única para todos os produtos */
-  --accent: #0f62fe; /* Blue 60 */
-  --accent-strong: #0043ce; /* Blue 70 — hover/active */
-  --accent-soft: #edf5ff; /* Blue 10 */
-  --accent-ink: #ffffff; /* texto sobre preenchimento accent */
-
-  /* Foco — contorno sólido de 2px, nunca borrado */
-  --focus: #0f62fe;
-
-  /* Espaço — grade 2px do Carbon (spacing-01 a spacing-09) */
-  --space-0: 2px;
+  /* Espaço */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
   --space-4: 16px;
   --space-5: 24px;
   --space-6: 32px;
-  --space-7: 40px;
-  --space-8: 48px;
-  --space-9: 64px;
 
-  /* Raio — o Carbon não arredonda cantos; só tags/chips levam 2px */
-  --radius-sm: 0;
-  --radius-md: 0;
-  --radius-lg: 0;
-  --radius-pill: 2px;
+  /* Raio */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
 
-  /* Sombra / elevação — o Carbon é essencialmente plano; camadas se
-     diferenciam por cor de superfície e borda, não por sombra suave. */
-  --shadow-card: none;
-  --shadow-popover: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.18);
+  /* Sombra / elevação */
+  --shadow-card: 0 0 0 1px rgba(255, 255, 255, 0.02), 0 10px 26px -14px rgba(0, 0, 0, 0.7);
+  --shadow-popover: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 20px 45px -20px rgba(0, 0, 0, 0.85);
 
-  /* Tipografia — IBM Plex, escala tipográfica do Carbon */
-  --font-app: "IBM Plex Sans", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
-  --tracking-heading: 0;
-  --eyebrow-case: none;
+  /* Tipografia */
+  --font-app: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+  --tracking-heading: -0.01em;
+  --eyebrow-case: uppercase;
 
-  --fs-xs: 12px; /* caption-01 / label-01 */
-  --fs-sm: 14px; /* body-compact-01 */
-  --fs-base: 14px; /* body-01 */
-  --fs-md: 16px; /* body-02 / heading-02 */
-  --fs-lg: 20px; /* heading-03 */
-  --fs-xl: 28px; /* heading-04 */
-  --fs-stat: 32px; /* heading-05 */
-  --fs-stat-lg: 42px; /* heading-06 */
+  --fs-xs: 11px;
+  --fs-sm: 12.5px;
+  --fs-base: 13.5px;
+  --fs-md: 15px;
+  --fs-lg: 18px;
+  --fs-xl: 22px;
+  --fs-stat: 28px;
+  --fs-stat-lg: 40px;
 
-  /* Movimento — easing e durações padrão do Carbon */
-  --transition-fast: 110ms cubic-bezier(0.2, 0, 0.38, 0.9);
+  /* Foco / interação — usa a cor de marca, definida nos arquivos brand-*.css */
+  --focus-ring: 0 0 0 3px var(--accent-soft), 0 0 0 1px var(--accent);
+  --transition-fast: 120ms ease;
 
   /* Camadas — altas de propósito: um overlay do DS deve ficar acima de
      qualquer chrome local do app consumidor (header sticky, banners),
@@ -112,9 +90,9 @@ body {
 }
 
 *:focus-visible {
-  outline: 2px solid var(--focus);
-  outline-offset: 1px;
-  box-shadow: none;
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--radius-sm);
 }
 
 @media (prefers-reduced-motion: reduce) {

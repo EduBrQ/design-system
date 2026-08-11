@@ -1,8 +1,8 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { useTheme } from "../ThemeContext";
+import { useBrand } from "../BrandContext";
 
 export function DocsLayout() {
-  const { theme, setTheme } = useTheme();
+  const { brand, setBrand } = useBrand();
 
   return (
     <div className="docs-shell">
@@ -24,24 +24,24 @@ export function DocsLayout() {
           </NavLink>
         </nav>
 
-        <div className="docs-nav__switch" role="tablist" aria-label="Tema de preview">
+        <div className="docs-nav__switch" role="tablist" aria-label="Marca de preview">
           <button
             type="button"
             role="tab"
-            aria-selected={theme === "white"}
-            className={theme === "white" ? "is-active" : undefined}
-            onClick={() => setTheme("white")}
+            aria-selected={brand === "aqua"}
+            className={brand === "aqua" ? "is-active" : undefined}
+            onClick={() => setBrand("aqua")}
           >
-            White
+            AquaFarm
           </button>
           <button
             type="button"
             role="tab"
-            aria-selected={theme === "g100"}
-            className={theme === "g100" ? "is-active" : undefined}
-            onClick={() => setTheme("g100")}
+            aria-selected={brand === "oficina"}
+            className={brand === "oficina" ? "is-active" : undefined}
+            onClick={() => setBrand("oficina")}
           >
-            Gray 100
+            Oficina Inteligente
           </button>
         </div>
       </header>
