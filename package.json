@@ -25,6 +25,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsup",
+    "prepare": "tsup",
     "typecheck": "tsc --noEmit",
     "preview": "vite preview"
   },
