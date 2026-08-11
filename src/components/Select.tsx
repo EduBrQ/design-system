@@ -1,4 +1,4 @@
-import { forwardRef, useId, type SelectHTMLAttributes } from "react";
+import { forwardRef, useId, type SelectHTMLAttributes, type ReactNode } from "react";
 import { cx } from "../utils/cx";
 
 export interface SelectOption {
@@ -7,9 +7,9 @@ export interface SelectOption {
 }
 
 export interface SelectProps extends Omit<SelectHTMLAttributes<HTMLSelectElement>, "children"> {
-  label?: string;
-  hint?: string;
-  error?: string;
+  label?: ReactNode;
+  hint?: ReactNode;
+  error?: ReactNode;
   options: SelectOption[];
   placeholder?: string;
 }
@@ -19,7 +19,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     const generatedId = useId();
     const selectId = id ?? generatedId;
     return (
-      <div className={cx("eds-field", error && "eds-field--error")}>
+      <div className={cx("eds-field", Boolean(error) && "eds-field--error")}>
         {label && (
           <label className="eds-field__label" htmlFor={selectId}>
             {label}

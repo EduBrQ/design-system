@@ -1,10 +1,10 @@
-import { forwardRef, useId, type InputHTMLAttributes } from "react";
+import { forwardRef, useId, type InputHTMLAttributes, type ReactNode } from "react";
 import { cx } from "../utils/cx";
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  label?: string;
-  hint?: string;
-  error?: string;
+  label?: ReactNode;
+  hint?: ReactNode;
+  error?: ReactNode;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -12,7 +12,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const generatedId = useId();
     const inputId = id ?? generatedId;
     return (
-      <div className={cx("eds-field", error && "eds-field--error")}>
+      <div className={cx("eds-field", Boolean(error) && "eds-field--error")}>
         {label && (
           <label className="eds-field__label" htmlFor={inputId}>
             {label}
