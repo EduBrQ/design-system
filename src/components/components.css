@@ -7,7 +7,7 @@
   justify-content: center;
   gap: var(--space-2);
   font-family: var(--font-app);
-  font-weight: 700;
+  font-weight: 600;
   font-size: calc(var(--fs-base) - 1px);
   border-radius: var(--radius-sm);
   border: var(--border-width) solid transparent;
@@ -62,9 +62,9 @@
 }
 .eds-field__label {
   font-size: var(--fs-xs);
-  font-weight: 700;
+  font-weight: 600;
   text-transform: var(--eyebrow-case);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   color: var(--text-muted);
 }
 .eds-input,
@@ -76,7 +76,7 @@
   border: var(--border-width) solid var(--border);
   border-radius: var(--radius-sm);
   padding: 9px 12px;
-  transition: border-color var(--transition-fast);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 .eds-input::placeholder {
   color: var(--text-faint);
@@ -88,6 +88,7 @@
 .eds-input:focus-visible,
 .eds-select:focus-visible {
   border-color: var(--accent);
+  box-shadow: var(--focus-ring);
 }
 .eds-field__hint {
   font-size: var(--fs-xs);
@@ -109,9 +110,9 @@
   padding: 3px 10px;
   border-radius: var(--radius-pill);
   font-size: var(--fs-xs);
-  font-weight: 700;
+  font-weight: 600;
   text-transform: var(--eyebrow-case);
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
   white-space: nowrap;
 }
 .eds-badge--accent {
@@ -155,7 +156,7 @@
 .eds-card__title {
   margin: 0 0 2px;
   font-size: var(--fs-md);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: var(--tracking-heading);
 }
 .eds-card__meta {
@@ -206,9 +207,9 @@
 .eds-table th {
   text-align: left;
   color: var(--text-muted);
-  font-weight: 700;
+  font-weight: 600;
   text-transform: var(--eyebrow-case);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   font-size: var(--fs-xs);
   padding: var(--space-2) var(--space-3);
   border-bottom: var(--border-width) solid var(--border);
@@ -352,7 +353,7 @@
 }
 .eds-alert__title {
   margin: 0;
-  font-weight: 700;
+  font-weight: 600;
   font-size: var(--fs-base);
 }
 .eds-alert__desc {
@@ -467,7 +468,7 @@
 .eds-empty__title {
   margin: 0;
   color: var(--text);
-  font-weight: 700;
+  font-weight: 600;
   font-size: var(--fs-md);
 }
 .eds-empty__desc {
@@ -540,6 +541,7 @@
 .eds-modal__title {
   margin: 0;
   font-size: var(--fs-lg);
+  font-weight: 600;
   font-family: var(--font-app);
   letter-spacing: var(--tracking-heading);
 }
@@ -754,7 +756,7 @@
 .eds-toast__title {
   margin: 0;
   font-size: var(--fs-base);
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text);
 }
 .eds-toast__desc {

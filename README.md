@@ -2,7 +2,7 @@
 
 Design system white-label compartilhado entre **AquaFarm** (repo `ecamarao`) e **Oficina Inteligente**. Um único conjunto de componentes React, com a marca (cor, e só a cor — o resto do visual é igual) trocada por CSS, não por fork de código.
 
-Direção visual: **Sinal & Métrica** — tema sempre escuro, números grandes, pensado para painéis operacionais (dashboard de fazenda, atendimento de oficina), não só telas de KPI.
+Direção visual: **Sinal & Métrica** — tema sempre escuro, números grandes, pensado para painéis operacionais (dashboard de fazenda, atendimento de oficina), não só telas de KPI. Forma (raio, sombra, anel de foco, peso tipográfico) segue o padrão do [shadcn/ui](https://ui.shadcn.com) — cantos suavemente arredondados, sombra discreta e nítida (não difusa), foco em anel com afastamento, tipografia Inter.
 
 ## Instalação
 
