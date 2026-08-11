@@ -184,6 +184,7 @@
   font-variant-numeric: tabular-nums;
   color: var(--text);
   line-height: 1.1;
+  overflow-wrap: anywhere;
 }
 .eds-stat__value--lg {
   font-size: var(--fs-stat-lg);
